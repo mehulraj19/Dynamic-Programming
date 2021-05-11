@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	
+	  int n = 10;
+	  unsigned ugly[n];
+    unsigned i2 = 0, i3 = 0, i5 = 0;
+    unsigned next2mul= 2;
+    unsigned next3mul = 3;
+    unsigned next5mul = 5;
+    unsigned next = 1;
+ 
+    ugly[0] = 1;
+    for (int i = 1; i < n; i++) {
+        next = min(next2mul,min(next3mul, next5mul));
+        ugly[i] = next;
+        if (next == next2mul) {
+            i2 = i2 + 1;
+            next2mul = ugly[i2] * 2;
+        }
+        if (next == next3mul) {
+            i3 = i3 + 1;
+            next3mul = ugly[i3] * 3;
+        }
+        if (next == next5mul) {
+            i5 = i5 + 1;
+            next5mul = ugly[i5] * 5;
+        }
+    } 
+    
+    cout << next;
+    return 0;
+}
