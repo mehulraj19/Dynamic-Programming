@@ -1,0 +1,22 @@
+
+const catalanNumber = (num, memo = {}) => {
+    
+    if(num in memo) return memo[num];
+
+    if(num <= 1){
+        return 1;
+    }
+    let res = 0;
+    for(let i=0; i<num; i++) {
+        res += catalanNumber(i, memo)*catalanNumber(num-i-1, memo);
+    }
+    memo[num] = res;
+    return res;
+};
+
+console.log(catalanNumber(1));
+console.log(catalanNumber(2));
+console.log(catalanNumber(3));
+console.log(catalanNumber(4));
+console.log(catalanNumber(5));
+console.log(catalanNumber(20));
